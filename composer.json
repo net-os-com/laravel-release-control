@@ -1,0 +1,45 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "net-os/laravel-release-control",
+    "description": "Shared maintenance state and client compatibility policy for Laravel deployments.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.4",
+        "ext-mbstring": "*",
+        "composer/semver": "^3.6",
+        "google/auth": "^1.55",
+        "google/cloud-core": "^1.74",
+        "google/cloud-storage": "^2.6",
+        "guzzlehttp/guzzle": "^7.10",
+        "laravel/framework": "^12.0",
+        "lorisleiva/laravel-actions": "^2.10",
+        "spatie/laravel-data": "^4.21"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.6",
+        "orchestra/testbench": "^10.0",
+        "pestphp/pest": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "NetOs\\ReleaseControl\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NetOs\\ReleaseControl\\ReleaseControlServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "pest"
+    }
+}
