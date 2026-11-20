@@ -11,7 +11,15 @@ permissions:
 
 jobs:
   php:
+    name: Laravel ${{ matrix.laravel }} / Guzzle ${{ matrix.guzzle }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - laravel: '^12.0'
+            guzzle: '^7.10'
+          - laravel: '^13.0'
+            guzzle: '^8.0'
     steps:
       - uses: actions/checkout@v4.2.2
       - uses: shivammathur/setup-php@v2
@@ -20,5 +28,8 @@ jobs:
           extensions: mbstring
           coverage: none
       - run: composer validate --strict
-      - run: composer install --no-interaction --prefer-dist --no-progress
+      - run: >-
+          composer update --no-interaction --prefer-dist --no-progress
+          --with 'laravel/framework:${{ matrix.laravel }}'
+          --with 'guzzlehttp/guzzle:${{ matrix.guzzle }}'
       - run: composer test

@@ -4,7 +4,7 @@ Read shared maintenance state and evaluate app and API version compatibility acr
 
 ## Install
 
-Requires PHP 8.4 and Laravel 12.
+Requires PHP 8.4 or later and Laravel 12 or 13.
 
 ~~~sh
 composer require net-os/laravel-release-control
